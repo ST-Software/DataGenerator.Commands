@@ -10,9 +10,6 @@ EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataGenerator.Commands.IntegrationTest.DbContextAssembly", "DataGenerator.Commands.IntegrationTest.DbContextAssembly\DataGenerator.Commands.IntegrationTest.DbContextAssembly.xproj", "{CE309050-4A29-4157-B734-2C470AE67D59}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7494235F-670A-4A97-8A3F-C8B616D0F5B1}"
-	ProjectSection(SolutionItems) = preProject
-		DataGenerator.Commands.IntegrationTest.DbContext\global.json = DataGenerator.Commands.IntegrationTest.DbContext\global.json
-	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataGenerator.Commands.IntegrationTest.StartupAssembly", "DataGenerator.Commands.IntegrationTest.StartupAssembly\DataGenerator.Commands.IntegrationTest.StartupAssembly.xproj", "{CFCE529E-9EEB-471F-BA0E-E854636ECA97}"
 EndProject

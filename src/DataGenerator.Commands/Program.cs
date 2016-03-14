@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Extensions.CommandLineUtils;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.PlatformAbstractions;
 
@@ -14,7 +15,7 @@ namespace DataGenerator.Commands
         public static int Main(string[] args)
         {
             var app = new CommandLineApplication();
-            app.Name = "DataGenerator.Commands";
+            app.Name = "DataGenerator.Commands (0.1.2)";
             app.Description = "Use existing DbContext in your project for different operations.";
             app.HelpOption("--help");
 
@@ -38,13 +39,15 @@ namespace DataGenerator.Commands
                 CommandOptionType.SingleValue,
                 option => option.AssignDefault("Development"));
 
-            var recreate = app.Option("--recreate <DATABASE_HOST>|<DATABASE_NAME>",
+            var recreate = app.Option("--recreate <DATABASE_HOST>:<DATABASE_NAME>",
                 "Drops and creates database you want to generate data to. The parameters are has to match connection string parameters. Except the '.' in connection string is replaced by machine name in that comparision.",
                 CommandOptionType.MultipleValue);
 
             var mode = app.Option("--mode", 
                 "If mode is 'wait' it waits at the and for user to press enter before leaving a program.", 
                 CommandOptionType.SingleValue);
+
+            var logger = new ConsoleLogger("DataGenerator.Commands", (s, level) => true, true);
 
             app.OnExecute(() =>
             {
@@ -56,7 +59,7 @@ namespace DataGenerator.Commands
                 var generatorTypeName = generatorType.Value() ?? FindGenerator(generatorAssemblyName);
                 if (generatorTypeName == null)
                 {
-                    Console.WriteLine($"Cannot find DataGenerator in assembly {generatorAssemblyName}");
+                    logger.LogError($"Cannot find DataGenerator in assembly {generatorAssemblyName}");
                     return 1;
                 }
 
@@ -66,17 +69,18 @@ namespace DataGenerator.Commands
                     GeneratorType = generatorTypeName,
                     GeneratorAssembly = generatorAssemblyName,
                     StartupAssembly = startupAssembly.Value() ?? dbContextAssemblyName,
-                    Recreate = recreate.Values.Count == 2,
+                    Recreate = recreate.HasValue() && recreate.Value().Contains(":"),
                     Environment = environment.Value()
                 };
 
                 if (options.Recreate)
                 {
-                    options.DeleteDatabase = recreate.Values[1];
-                    options.DeleteHost = recreate.Values[0];
+                    var recreateOptions = recreate.Value().Split(':');
+                    options.DeleteDatabase = recreateOptions[1];
+                    options.DeleteHost = recreateOptions[0];
                 }
 
-                var logger = new ConsoleLogger("DataGenerator.Commands", (s, level) => true, true);
+                
                 return DbDataBootstrapper.Bootsrap(options, logger) ? 0 : 2;
             });
 

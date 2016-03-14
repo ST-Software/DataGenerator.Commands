@@ -29,11 +29,14 @@ namespace DataGenerator.Commands
                 if (options.Recreate)
                 {
                     var dbConnection = dbContext.Database.GetDbConnection();
-                    var machineName = dbConnection.DataSource;
+                    var machineName = dbConnection.DataSource == "." ? Environment.MachineName : dbConnection.DataSource; //Environment.GetEnvironmentVariable("COMPUTERNAME")
                     var dbName = dbConnection.Database;
 
-                    var hostName = options.DeleteHost == "." ? Environment.GetEnvironmentVariable("COMPUTERNAME") : options.DeleteHost;
-                    if (machineName == hostName && dbName == options.DeleteDatabase)
+                    var canDelete = string.Equals(machineName, options.DeleteHost, StringComparison.CurrentCultureIgnoreCase) 
+                        && string.Equals(dbName, options.DeleteDatabase, StringComparison.CurrentCultureIgnoreCase);
+
+                    logger.LogInformation($"--recreate command check -  {machineName} == {options.DeleteHost} && {dbName} == {options.DeleteDatabase} => {canDelete}");
+                    if (canDelete)
                     {
                         logger.LogInformation($"Deleting database: {dbConnection.ConnectionString}");
                         dbContext.Database.EnsureDeleted();
