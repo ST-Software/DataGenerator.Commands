@@ -19,31 +19,31 @@ namespace DataGenerator.Commands
             app.HelpOption("--help");
 
             var dbContextAssembly = app.Option("--dbContextAssembly <DB_CONTEXT_ASSEMBLY_NAME>",
-                "assembly name where the DbContext is located", CommandOptionType.SingleValue);
+                "Assembly name where the DbContext is located.", CommandOptionType.SingleValue);
 
             var generatorType = app.Option("--generatorType <GENERATOR_TYPE>",
-                "generator class name (this class has to have Generate(DbContext) method)",
+                "Generator class name (this class has to have Generate(DbContext) method).",
                 CommandOptionType.SingleValue);
 
             var generatorAssembly = app.Option("--generatorAssembly <GENERATOR_ASSEMBLY_NAME>",
-                "generator class name (this class has to have Generate(DbContext) method)",
+                "Generator class name (this class has to have Generate(DbContext) method).",
                 CommandOptionType.SingleValue);
 
             var startupAssembly = app.Option("--startupAssembly <STARTUP_ASSEMBLY>",
-                "assembly name where the Startup class which initialize DbContext is located",
+                "Assembly name where the Startup class which initialize DbContext is located.",
                 CommandOptionType.SingleValue);
 
             var environment = app.Option("--environment <ENVIRONMENT>",
-                "used environment passed to Startup class for initialization (default is 'Development')",
+                "Used environment passed to Startup class for initialization (default is 'Development').",
                 CommandOptionType.SingleValue,
                 option => option.AssignDefault("Development"));
 
             var recreate = app.Option("--recreate <DATABASE_HOST>|<DATABASE_NAME>",
-                "The machine where your database is running",
+                "Drops and creates database you want to generate data to. The parameters are has to match connection string parameters. Except the '.' in connection string is replaced by machine name in that comparision.",
                 CommandOptionType.MultipleValue);
 
             var mode = app.Option("--mode", 
-                "If mode is 'wait' it waits at the and for user to press enter before leaving a program", 
+                "If mode is 'wait' it waits at the and for user to press enter before leaving a program.", 
                 CommandOptionType.SingleValue);
 
             app.OnExecute(() =>

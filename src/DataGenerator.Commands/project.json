@@ -1,10 +1,10 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "0.1.0-*",
   "description": "Data generation commmands",
-  "authors": [ "pvasek" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
+  "authors": [ "ST-Software" ],
+  "tags": [ "entity-framework", "net-core", "data-generation" ],
+  "projectUrl": "https://github.com/ST-Software/DataGenerator.Commands",
+  "licenseUrl": "https://raw.githubusercontent.com/ST-Software/DataGenerator.Commands/master/LICENSE",
 
   "dependencies": {
     "EntityFramework.Commands": "7.0.0-rc1-final",
@@ -19,15 +19,10 @@
   },
 
   "frameworks": {
-    "dnx451": { },
-    "dnxcore50": {
-      "dependencies": {
-        "Microsoft.CSharp": "4.0.1-beta-23516",
-        "System.Collections": "4.0.11-beta-23516",
-        "System.Console": "4.0.0-beta-23516",
-        "System.Linq": "4.0.1-beta-23516",
-        "System.Threading": "4.0.11-beta-23516"
+    "net451": {
+      "frameworkAssemblies": {
+        "System.Runtime": "4.0.10.0" 
       }
-    }
+    }    
   }
 }
