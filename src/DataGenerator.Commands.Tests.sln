@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataGenerator.Commands.Tests", "DataGenerator.Commands.Tests\DataGenerator.Commands.Tests.xproj", "{0AA3074A-639D-475B-B526-28F924665B3E}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataGenerator.Commands", "DataGenerator.Commands\DataGenerator.Commands.xproj", "{2203C05A-DED2-40EB-B4EA-54B663EECC9C}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataGenerator.Commands.IntegrationTest.DbContextAssembly", "DataGenerator.Commands.IntegrationTest.DbContextAssembly\DataGenerator.Commands.IntegrationTest.DbContextAssembly.xproj", "{CE309050-4A29-4157-B734-2C470AE67D59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7494235F-670A-4A97-8A3F-C8B616D0F5B1}"
+	ProjectSection(SolutionItems) = preProject
+		DataGenerator.Commands.IntegrationTest.DbContext\global.json = DataGenerator.Commands.IntegrationTest.DbContext\global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "DataGenerator.Commands.IntegrationTest.StartupAssembly", "DataGenerator.Commands.IntegrationTest.StartupAssembly\DataGenerator.Commands.IntegrationTest.StartupAssembly.xproj", "{CFCE529E-9EEB-471F-BA0E-E854636ECA97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0AA3074A-639D-475B-B526-28F924665B3E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AA3074A-639D-475B-B526-28F924665B3E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AA3074A-639D-475B-B526-28F924665B3E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AA3074A-639D-475B-B526-28F924665B3E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2203C05A-DED2-40EB-B4EA-54B663EECC9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2203C05A-DED2-40EB-B4EA-54B663EECC9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2203C05A-DED2-40EB-B4EA-54B663EECC9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2203C05A-DED2-40EB-B4EA-54B663EECC9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE309050-4A29-4157-B734-2C470AE67D59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE309050-4A29-4157-B734-2C470AE67D59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE309050-4A29-4157-B734-2C470AE67D59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE309050-4A29-4157-B734-2C470AE67D59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFCE529E-9EEB-471F-BA0E-E854636ECA97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFCE529E-9EEB-471F-BA0E-E854636ECA97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFCE529E-9EEB-471F-BA0E-E854636ECA97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFCE529E-9EEB-471F-BA0E-E854636ECA97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

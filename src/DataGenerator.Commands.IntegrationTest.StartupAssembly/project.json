@@ -1,0 +1,36 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "DataGenerator.Commands.IntegrationTests.StartupAssembly Console Application",
+  "authors": [ "pvasek" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+
+  "compilationOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "DataGenerator.Commands.IntegrationTest.DbContextAssembly": "",
+    "EntityFramework.InMemory": "7.0.0-rc1-final",
+    "EntityFramework.Core": "7.0.0-rc1-final",
+    "Microsoft.AspNet.Hosting": "1.0.0-rc1-final"
+  },
+
+  "commands": {
+    "datagen3a": "DataGenerator.Commands --mode wait --dbContextAssembly DataGenerator.Commands.IntegrationTest.DbContextAssembly --startupAssembly DataGenerator.Commands.IntegrationTest.StartupAssembly --generatorType DataGenerator.Commands.IntegrationTest.DbContextAssembly.DataGenerator"
+  },
+
+  "frameworks": {
+    "dnx451": { },
+    "dnxcore50": {
+      "dependencies": {
+        "Microsoft.CSharp": "4.0.1-beta-23516",
+        "System.Collections": "4.0.11-beta-23516",
+        "System.Console": "4.0.0-beta-23516",
+        "System.Linq": "4.0.1-beta-23516",
+        "System.Threading": "4.0.11-beta-23516"
+      }
+    }
+  }
+}
