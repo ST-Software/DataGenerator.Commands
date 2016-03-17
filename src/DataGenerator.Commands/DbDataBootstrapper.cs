@@ -29,7 +29,7 @@ namespace DataGenerator.Commands
                 if (options.Recreate)
                 {
                     var dbConnection = dbContext.Database.GetDbConnection();
-                    var machineName = dbConnection.DataSource == "." ? Environment.MachineName : dbConnection.DataSource; //Environment.GetEnvironmentVariable("COMPUTERNAME")
+                    var machineName = dbConnection.DataSource.Replace(".", Environment.MachineName); //Environment.GetEnvironmentVariable("COMPUTERNAME")
                     var dbName = dbConnection.Database;
 
                     var canDelete = string.Equals(machineName, options.DeleteHost, StringComparison.CurrentCultureIgnoreCase) 
@@ -39,8 +39,7 @@ namespace DataGenerator.Commands
                     if (canDelete)
                     {
                         logger.LogInformation($"Deleting database: {dbConnection.ConnectionString}");
-                        dbContext.Database.EnsureDeleted();
-                        dbContext.Database.EnsureCreated();
+                        dbContext.Database.EnsureDeleted();                        
                     }
                     else
                     {
@@ -48,6 +47,7 @@ namespace DataGenerator.Commands
                         return false;
                     }
                 }
+                dbContext.Database.EnsureCreated();
 
                 var dataGenMethod = dataGenType.GetMethod("Generate");
 
