@@ -41,10 +41,14 @@ namespace DataGenerator.Commands
 
             var recreate = app.Option("--recreate <DATABASE_HOST>:<DATABASE_NAME>",
                 "Drops and creates database you want to generate data to. The parameters are has to match connection string parameters. Except the '.' in connection string is replaced by machine name in that comparision.",
-                CommandOptionType.MultipleValue);
+                CommandOptionType.SingleValue);
 
             var mode = app.Option("--mode", 
                 "If mode is 'wait' it waits at the and for user to press enter before leaving a program.", 
+                CommandOptionType.SingleValue);
+
+            var argument = app.Option("--argument|-a <ARGUMENT>",
+                "This argument is passed as the second argument to the data generator.",
                 CommandOptionType.SingleValue);
 
             var logger = new ConsoleLogger("DataGenerator.Commands", (s, level) => true, true);
@@ -70,7 +74,8 @@ namespace DataGenerator.Commands
                     GeneratorAssembly = generatorAssemblyName,
                     StartupAssembly = startupAssembly.Value() ?? dbContextAssemblyName,
                     Recreate = recreate.HasValue() && recreate.Value().Contains(":"),
-                    Environment = environment.Value()
+                    Environment = environment.Value(),
+                    Argument = argument.Value()
                 };
 
                 if (options.Recreate)

@@ -16,6 +16,20 @@ __Generator class:__
         }
     }
 ```    
+OR
+
+```csharp
+ public class DataGenerator
+    {
+        public void Generate(AppDbContext dbContext, string argument)
+        {
+			//argument contains the value from the --argument parameter
+            dbContext.Users.Add(new User { Name = "User1" });
+            dbContext.Users.Add(new User { Name = "User2" });
+            dbContext.SaveChanges();
+        }
+    }
+```    
 
 __project.json:__
 ```json
@@ -41,3 +55,4 @@ DataGenerator.Commands accept following parameters:
 |`--environment <ENVIRONMENT>`                          | Used environment passed to Startup class for initialization (default is 'Development'). |
 |`--recreate <DATABASE_HOST>|<DATABASE_NAME>`           | Drops and creates database you want to generate data to. The parameters are has to match connection string parameters. Except the '.' in connection string is replaced by machine name in that comparision. |
 |`--mode wait`                                          | If mode is 'wait' it waits at the and for user to press enter before leaving a program. |
+|`--argument <ARGUMENT>									| This argument is passed as the second argument to the data generator. |

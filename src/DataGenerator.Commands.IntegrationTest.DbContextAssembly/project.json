@@ -23,7 +23,7 @@
     "datagen1a": "DataGenerator.Commands --mode wait",
     "datagen2a": "DataGenerator.Commands --mode wait --generatorType DataGenerator.Commands.IntegrationTest.DbContextAssembly.DataGenerator",
     "datagen2b": "DataGenerator.Commands --mode wait --dbContextAssembly DataGenerator.Commands.IntegrationTest.DbContextAssembly --generatorType DataGenerator.Commands.IntegrationTest.DbContextAssembly.DataGenerator",
-    "datagen2c": "DataGenerator.Commands --mode wait --dbContextAssembly DataGenerator.Commands.IntegrationTest.DbContextAssembly --startupAssembly DataGenerator.Commands.IntegrationTest.DbContextAssembly --generatorType DataGenerator.Commands.IntegrationTest.DbContextAssembly.DataGenerator"
+    "datagen2c": "DataGenerator.Commands --mode wait --dbContextAssembly DataGenerator.Commands.IntegrationTest.DbContextAssembly --startupAssembly DataGenerator.Commands.IntegrationTest.DbContextAssembly --generatorType DataGenerator.Commands.IntegrationTest.DbContextAssembly.DataGenerator",
   },
 
   "frameworks": {

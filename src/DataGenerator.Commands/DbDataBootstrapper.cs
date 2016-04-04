@@ -52,7 +52,19 @@ namespace DataGenerator.Commands
                 var dataGenMethod = dataGenType.GetMethod("Generate");
 
                 logger.LogInformation("Starting generating data...");
-                dataGenMethod.Invoke(dataGen, new[] { dbContext });
+                var numberOfExpectedParameters = dataGenMethod.GetParameters().Length;
+                if (numberOfExpectedParameters == 1)
+                {
+                    dataGenMethod.Invoke(dataGen, new[] {dbContext});
+                }
+                else if (numberOfExpectedParameters == 2)
+                {
+                    dataGenMethod.Invoke(dataGen, new object[] {dbContext, options.Argument});
+                }
+                else
+                {
+                    logger.LogError("Generator has a wrong signiture. Expected signitures are: Generate(YourDbContext dbContext), Generate(YourDbContext dbContext, string argument)");
+                }
                 logger.LogInformation("Done");
 
                 return true;

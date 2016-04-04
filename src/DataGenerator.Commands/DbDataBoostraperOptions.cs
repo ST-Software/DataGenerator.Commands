@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace DataGenerator.Commands
 {
     public class DbDataBoostraperOptions
@@ -13,6 +11,8 @@ namespace DataGenerator.Commands
         public bool Recreate { get; set; }
         public string DeleteHost { get; set; }
         public string DeleteDatabase { get; set; }        
+
+        public string Argument { get; set; }
     }
 
 
