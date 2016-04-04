@@ -1,5 +1,5 @@
 ﻿{
-  "version": "0.1.4-*",
+  "version": "0.1.5-*",
   "description": "Data generation commmands",
   "authors": [ "ST-Software" ],
   "tags": [ "entity-framework", "net-core", "data-generation" ],
