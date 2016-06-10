@@ -1,5 +1,5 @@
 ﻿using System;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataGenerator.Commands.IntegrationTest.DbContextAssembly
 {

@@ -2,26 +2,29 @@
   "version": "1.0.0-*",
   "description": "DataGenerator.Commands.IntegrationTests.StartupAssembly Console Application",
   "authors": [ "pvasek" ],
-  "tags": [ "" ],
-  "projectUrl": "",
-  "licenseUrl": "",
 
-  "compilationOptions": {
+  "buildOptions": {
     "emitEntryPoint": true
   },
 
   "dependencies": {
-    "DataGenerator.Commands.IntegrationTest.DbContextAssembly": "",
-    "EntityFramework.InMemory": "7.0.0-rc1-final",
-    "EntityFramework.Core": "7.0.0-rc1-final",
-    "Microsoft.AspNet.Hosting": "1.0.0-rc1-final"
-  },
-
-  "commands": {
-    "datagen3a": "DataGenerator.Commands --mode wait --dbContextAssembly DataGenerator.Commands.IntegrationTest.DbContextAssembly --startupAssembly DataGenerator.Commands.IntegrationTest.StartupAssembly --generatorType DataGenerator.Commands.IntegrationTest.DbContextAssembly.DataGenerator"
+    "Microsoft.EntityFrameworkCore": "1.0.0-rc2-final",
+    "Microsoft.EntityFrameworkCore.InMemory": "1.0.0-rc2-final",
+    "DataGenerator.Commands.IntegrationTest.DbContextAssembly": ""
   },
 
   "frameworks": {
-    "dnx451": { }
-  }
+    "net451": {
+      "buildOptions": {
+        "outputName": "Microsoft.EntityFrameworkCore.Tools",
+        "emitEntryPoint": false
+      }
+    }
+  },
+
+
+/*  "commands": {
+    "datagen3a": "DataGenerator.Commands --mode wait --dbContextAssembly DataGenerator.Commands.IntegrationTest.DbContextAssembly --startupAssembly DataGenerator.Commands.IntegrationTest.StartupAssembly --generatorType DataGenerator.Commands.IntegrationTest.DbContextAssembly.DataGenerator"
+  }*/
+
 }

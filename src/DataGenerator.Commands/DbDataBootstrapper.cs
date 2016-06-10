@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Reflection;
-using Microsoft.Data.Entity.Design;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Logging;
-using Microsoft.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataGenerator.Commands
 {
     public class DbDataBootstrapper
     {
-        public static bool Bootsrap(DbDataBoostraperOptions options, ILogger logger)
+        public static bool Bootsrap(DbDataBoostraperOptions options, ILogger logger, string targetDir)
         {
             var dbContextOperations = new DbContextOperations(
                 new SimpleLoggerProvider(logger),
-                options.DbContextAssembly,
-                options.StartupAssembly,
-                options.Environment);
+                Assembly.Load(options.DbContextAssembly),
+                Assembly.Load(options.StartupAssembly),
+                options.Environment,
+                targetDir);
 
             logger.LogInformation("Creating db context...");
             using (var dbContext = dbContextOperations.CreateContext(null))

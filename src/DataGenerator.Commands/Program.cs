@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Linq;
-using System.Collections.Generic;
 using System.Reflection;
 using Microsoft.Extensions.CommandLineUtils;
-using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.PlatformAbstractions;
+using System.IO;
 
 namespace DataGenerator.Commands
 {
@@ -14,6 +13,7 @@ namespace DataGenerator.Commands
 
         public static int Main(string[] args)
         {
+            
             var app = new CommandLineApplication();
             app.Name = "DataGenerator.Commands (0.1.2)";
             app.Description = "Use existing DbContext in your project for different operations.";
@@ -63,7 +63,7 @@ namespace DataGenerator.Commands
                 var generatorTypeName = generatorType.Value() ?? FindGenerator(generatorAssemblyName);
                 if (generatorTypeName == null)
                 {
-                    logger.LogError($"Cannot find DataGenerator in assembly {generatorAssemblyName}");
+                    logger.WriteMessage(Microsoft.Extensions.Logging.LogLevel.Error, "datagen", 1,  $"Cannot find DataGenerator in assembly {generatorAssemblyName}");
                     return 1;
                 }
 
@@ -86,7 +86,7 @@ namespace DataGenerator.Commands
                 }
 
                 
-                return DbDataBootstrapper.Bootsrap(options, logger) ? 0 : 2;
+                return DbDataBootstrapper.Bootsrap(options, logger, Directory.GetCurrentDirectory()) ? 0 : 2;
             });
 
             var result = app.Execute(args);

@@ -1,28 +1,32 @@
 ﻿{
-  "version": "0.1.6-*",
+  "version": "1.0.1-*",
   "description": "Data generation commmands",
   "authors": [ "ST-Software" ],
-  "tags": [ "entity-framework", "net-core", "data-generation" ],
-  "projectUrl": "https://github.com/ST-Software/DataGenerator.Commands",
-  "licenseUrl": "https://raw.githubusercontent.com/ST-Software/DataGenerator.Commands/master/LICENSE",
+
+  "packOptions": {
+    "tags": [ "entity-framework", "net-core", "data-generation" ],
+    "projectUrl": "https://github.com/ST-Software/DataGenerator.Commands",
+    "licenseUrl": "https://raw.githubusercontent.com/ST-Software/DataGenerator.Commands/master/LICENSE"    
+  },
+
+  "buildOptions": {
+    "emitEntryPoint": true,
+    "outputName": "dotnet-datagen",
+    "warningsAsErrors": true  
+  },
 
   "dependencies": {
-    "EntityFramework.Commands": "7.0.0-rc1-final",
-    "Microsoft.Extensions.CommandLineUtils": "1.0.0-rc2-16107",
-    "Microsoft.Extensions.Logging.Console": "1.0.0-rc1-final"
+    "Microsoft.EntityFrameworkCore.Design": "1.0.0-*",
+    "Microsoft.Extensions.PlatformAbstractions": "1.0.0-rc2-final",
+    "Microsoft.Extensions.Logging.Console": "1.0.0-rc2-final"
   },
 
-  "commands": {
-    "help": "DataGenerator.Commands --help",
-    "run1": "DataGenerator.Commands --generatorType generator_type",
-    "run2": "DataGenerator.Commands --dbContextAssembly db_context_assembly --generatorType generator_type --recreate host|db"
-  },
-
-  "frameworks": {
-    "dnx451": {
-      "frameworkAssemblies": {
-        "System.Runtime": "4.0.10.0" 
+   "frameworks": {
+      "net451": {
+        "buildOptions": {
+          "outputName": "Microsoft.EntityFrameworkCore.Tools",
+          "emitEntryPoint": false
+        }
       }
-    }    
   }
 }
